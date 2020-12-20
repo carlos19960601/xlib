@@ -2,17 +2,18 @@ package mysql
 
 import (
 	"database/sql"
+
 )
 
-type MySQL struct {
-	db      *sql.DB
+type Client struct {
+	*sql.DB
 	options Options
 }
 
-func NewMySQL(options ...Option) *MySQL {
+func NewMySQL(options ...Option) *Client {
 	opts := NewOptions(options...)
 
-	mysql := &MySQL{
+	mysql := &Client{
 		options: opts,
 	}
 
@@ -25,6 +26,6 @@ func NewMySQL(options ...Option) *MySQL {
 	db.SetMaxIdleConns(mysql.options.MaxIdleConns)
 	db.SetConnMaxLifetime(mysql.options.ConnMaxLifetime)
 
-	mysql.db = db
+	mysql.DB = db
 	return mysql
 }

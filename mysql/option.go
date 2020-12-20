@@ -17,25 +17,25 @@ type Options struct {
 
 type Option func(*Options)
 
-func MaxOpenConns(a int) Option {
+func WithMaxOpenConns(a int) Option {
 	return func(o *Options) {
 		o.MaxOpenConns = a
 	}
 }
 
-func MaxIdleConns(a int) Option {
+func WithMaxIdleConns(a int) Option {
 	return func(o *Options) {
 		o.MaxIdleConns = a
 	}
 }
 
-func ConnMaxLifetime(t time.Duration) Option {
+func WithConnMaxLifetime(t time.Duration) Option {
 	return func(o *Options) {
 		o.ConnMaxLifetime = t
 	}
 }
 
-func DSN(a string) Option {
+func WithDSN(a string) Option {
 	return func(o *Options) {
 		o.DSN = a
 	}
